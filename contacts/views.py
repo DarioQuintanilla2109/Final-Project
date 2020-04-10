@@ -6,7 +6,7 @@ from .models import Contact
 # Create your views here.
 def contact(request):
 	if request.method == 'POST':
-		#listing_id = request.POST['listing_id']
+		listing_id = request.POST['listing_id']
 		listing = request.POST['listing']
 		name = request.POST['name']
 		email = request.POST['email']
@@ -19,5 +19,5 @@ def contact(request):
 		contact.save()
 
 		messages.success(request, 'Your request has been submitted. We will get back with you soon.')
-		return redirect('/listings/')
+		return redirect('/listings/' + listing_id)
 
